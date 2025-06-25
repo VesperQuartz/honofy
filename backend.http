@@ -1,0 +1,22 @@
+### signup
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "lilbrown3000+200@gmail.com",
+  "password": "password",
+  "username": "Josh"
+}
+
+
+### login
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "lilbrown3000@gmail.com",
+  "password": "password"
+}
+
+### Get session
+GET http://localhost:4000/api/auth/session

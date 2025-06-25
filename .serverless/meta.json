@@ -1,0 +1,76 @@
+{
+  "unknown": {
+    "versionFramework": "4.17.1",
+    "command": [],
+    "options": {},
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  },
+  "/home/brown/Code/hono-backend/serverless.yml": {
+    "versionFramework": "4.17.1",
+    "servicePath": "/home/brown/Code/hono-backend/serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "org": "mrlectus",
+      "app": "kokoma",
+      "service": "kokoma",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs20.x",
+        "stage": "dev",
+        "region": "us-east-1",
+        "versionFunctions": true
+      },
+      "functions": {
+        "hello": {
+          "handler": "handler.hello",
+          "events": [
+            {
+              "httpApi": {
+                "path": "/",
+                "method": "get"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs20.x",
+      "stage": "dev",
+      "region": "us-east-1",
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": true,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": "NRQCbYG52TLHPqJCTn",
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: mrlectus\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: kokoma\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: kokoma\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n\nfunctions:\n  hello:\n    handler: handler.hello\n    events:\n      - httpApi:\n          path: /\n          method: get\n",
+    "command": [],
+    "options": {
+      "help": true
+    },
+    "orgId": "2cc1c1f5-2393-4da7-b109-107ae6568ade",
+    "orgName": "mrlectus",
+    "userId": "lyZQxsNQ3KvnDKq3g9",
+    "userName": "mrlectus",
+    "serviceProviderAwsAccountId": "824636437844",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
