@@ -24,6 +24,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Setup Bun
       run: npm install -g bun
-    - run: source /home/runner/.bashrc
     - run: bun -v
+    - name: Install dependency
+      run: bun install
     - run: echo ${{env.API_VER}}
