@@ -20,8 +20,6 @@ jobs:
       uses: actions/checkout@v4
     - name: Setup Bun
       run: curl -fsSL https://bun.sh/install | bash
+    - run: source /home/runner/.bashrc
     - run: bun -v
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
     - run: echo ${{env.API_VER}}
