@@ -13,7 +13,8 @@ jobs:
       matrix:
         node-version: [18.x, 22.x]
     env:
-      API_VER: "22.04"
+      AWS_ACCESS_KEY:  ${{vars.AWS_ACCESS_KEY}}
+      AWS_SECRET_KEY: ${{secrets.AWS_SECRET_KEY}}
 
     steps:
     - name: do checkout
@@ -27,6 +28,7 @@ jobs:
     - run: bun -v
     - name: Install dependency
       run: bun install
-    - run: echo ${{env.API_VER}}
-    - run: echo ${{vars.AWS_ACCESS_KEY}}
+    - run: echo ${{env.AWS_ACCESS_KEY}}
+    - run: echo ${{env.AWS_ACCESS_KEY}}
+    - run: echo ${{vars.AWS_SECRET_KEY}}
     - run: echo ${{secrets.AWS_SECRET_KEY}}
