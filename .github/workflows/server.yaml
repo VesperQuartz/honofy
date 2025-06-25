@@ -28,3 +28,5 @@ jobs:
     - name: Install dependency
       run: bun install
     - run: echo ${{env.API_VER}}
+    - run: echo ${{env.AWS_ACCESS_KEY}}
+    - run: echo ${{env.AWS_SECRET_KEY}}
