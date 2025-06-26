@@ -13,32 +13,19 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
-    env:
-      AWS_ACCESS_KEY:  ${{ secrets.AWS_ACCESS_KEY }}
-      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-      DB_URL: ${{ secrets.DB_URL }}
-      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
-      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
-
     steps:
     - name: do checkout
       uses: actions/checkout@v4
-    - name: Setup Bun
-      uses: oven-sh/setup-bun@v2
-      with:
-        bun-version: latest
-    - name: Install dependency
-      run: bun install
-    - name: Ssh into server
+    - name: ssh into server
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: "unnecessary"
-    - name: Known host
+    - name: known host
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
     - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
-    - run: echo ${{ secrets.ENV }} .env
+    - run: echo ${{ secrets.ENV }} > .env
     - run: rsync -avz .env 'root@${{secrets.PHOST}}':/root/deploy/
-    - name: install server dependencies
+    - name: install dependencies
       run: |
         ssh 'root@${{ secrets.PHOST }}' "cd deploy; ~/.bun/bin/bun install; pm2 start --interpreter ~/.bun/bin/bun src/index.ts --name server"
