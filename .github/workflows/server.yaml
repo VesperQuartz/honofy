@@ -37,3 +37,6 @@ jobs:
     - name: Known host
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
     - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
+    - name: install server dependencies
+      run: |
+        ssh 'root@${{ secrets.PHOST }}' "cd deploy; bun install"
