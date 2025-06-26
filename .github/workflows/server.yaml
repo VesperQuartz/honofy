@@ -29,3 +29,13 @@ jobs:
         bun-version: latest
     - name: Install dependency
       run: bun install
+    - run: ls
+    - run: pwd
+    - name: Ssh into server
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+    - name: Known host
+      run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
+    - run: ls
+    - run: pwd
