@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 22.x]
+        node-version: [22.x]
     env:
       AWS_ACCESS_KEY:  ${{ secrets.AWS_ACCESS_KEY }}
       AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
@@ -23,13 +23,9 @@ jobs:
     steps:
     - name: do checkout
       uses: actions/checkout@v4
-    - name: Setup Npm
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
     - name: Setup Bun
-      run: npm install -g bun
-    - run: bun -v
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
     - name: Install dependency
       run: bun install
-    - run: env
