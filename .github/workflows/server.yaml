@@ -35,6 +35,7 @@ jobs:
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_KEY }}
+        known_hosts: "unnecessary"
     - name: Known host
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
     - run: ls
