@@ -8,13 +8,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: mrlectus
 
     strategy:
       matrix:
         node-version: [18.x, 22.x]
     env:
-      AWS_ACCESS_KEY:  ${{vars.AWS_ACCESS_KEY}}
-      AWS_SECRET_KEY: ${{secrets.AWS_SECRET_KEY}}
+      AWS_ACCESS_KEY:  ${{ vars.AWS_ACCESS_KEY }}
+      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
     steps:
     - name: do checkout
