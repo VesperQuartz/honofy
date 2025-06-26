@@ -36,4 +36,4 @@ jobs:
         known_hosts: "unnecessary"
     - name: Known host
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
-    - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude=node_module
+    - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
