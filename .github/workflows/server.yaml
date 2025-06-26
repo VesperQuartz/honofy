@@ -39,4 +39,4 @@ jobs:
     - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
     - name: install server dependencies
       run: |
-        ssh 'root@${{ secrets.PHOST }}' "cd deploy; ~/.bun/bin/bun install; pm2 run '~/.bun/bin/bun start' --name server"
+        ssh 'root@${{ secrets.PHOST }}' "cd deploy; ~/.bun/bin/bun install; pm2 start --interpreter ~/.bun/bin/bun src/index.ts --name server"
