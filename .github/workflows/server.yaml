@@ -24,7 +24,8 @@ jobs:
     - name: known host
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
     - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
-    - run: echo ${{ secrets.ENV }} > .env
+    - run: echo ${{ vars.ENV }} > .env
+    - run: cat .env
     - run: rsync -avz .env 'root@${{secrets.PHOST}}':/root/deploy/
     - name: install dependencies
       run: |
