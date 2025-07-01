@@ -24,7 +24,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: "unnecessary"
     - name: known host
-      shell: zsh {0}
+      shell: zsh
       run: ssh-keyscan -H ${{ secrets.PHOST }} >> ~/.ssh/known_hosts
     - run: rsync -avz . 'root@${{secrets.PHOST}}':/root/deploy/ --exclude={node_modules,.git}
     - run: echo '${{ env.ENV_FILE }}' > .env
